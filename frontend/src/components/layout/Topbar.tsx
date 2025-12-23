@@ -5,6 +5,12 @@ import { useTheme } from "@/app/providers"
 
 export function Topbar() {
   const { theme, toggleTheme } = useTheme()
+  
+  // Detect environment: production if on GitHub Pages, local otherwise
+  const isProduction = window.location.hostname.includes('github.io') || 
+                       window.location.hostname.includes('vercel.app') ||
+                       window.location.hostname !== 'localhost' && !window.location.hostname.includes('127.0.0.1')
+  const envLabel = isProduction ? "Live" : "Local"
 
   return (
     <div className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 shadow-sm">
@@ -15,9 +21,12 @@ export function Topbar() {
           </h2>
           <Badge 
             variant="outline" 
-            className="bg-primary/10 text-primary border-primary/20 font-medium"
+            className={isProduction 
+              ? "bg-green-500/10 text-green-500 border-green-500/20 font-medium" 
+              : "bg-primary/10 text-primary border-primary/20 font-medium"
+            }
           >
-            Local
+            {envLabel}
           </Badge>
         </div>
         <div className="flex items-center gap-4">
