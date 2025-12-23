@@ -13,6 +13,8 @@ const Accordion = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     type?: "single" | "multiple"
     defaultValue?: string | string[]
+    /** Optional compatibility prop; currently behaves like always-collapsible. */
+    collapsible?: boolean
   }
 >(({ className, type = "single", defaultValue, ...props }, ref) => {
   const [openItems, setOpenItems] = React.useState<Set<string>>(

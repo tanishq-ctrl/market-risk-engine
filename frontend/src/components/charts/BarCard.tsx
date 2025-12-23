@@ -40,7 +40,7 @@ export function BarCard({
           <XAxis type="number" tickFormatter={valueFormatter} className="text-xs" />
           <YAxis dataKey="name" type="category" width={100} className="text-xs" />
           <Tooltip
-            formatter={(value: number) => valueFormatter(value)}
+            formatter={(value: number | undefined) => valueFormatter(value ?? 0)}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",
