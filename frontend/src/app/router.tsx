@@ -8,20 +8,26 @@ import { StressTests } from "@/pages/StressTests"
 import { Backtesting } from "@/pages/Backtesting"
 import { Export } from "@/pages/Export"
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppShell />,
+      children: [
+        { index: true, element: <Portfolio /> },
+        { path: "portfolio", element: <Portfolio /> },
+        { path: "market-data", element: <MarketData /> },
+        { path: "risk-metrics", element: <RiskMetrics /> },
+        { path: "var", element: <VaR /> },
+        { path: "stress-tests", element: <StressTests /> },
+        { path: "backtesting", element: <Backtesting /> },
+        { path: "export", element: <Export /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <AppShell />,
-    children: [
-      { index: true, element: <Portfolio /> },
-      { path: "portfolio", element: <Portfolio /> },
-      { path: "market-data", element: <MarketData /> },
-      { path: "risk-metrics", element: <RiskMetrics /> },
-      { path: "var", element: <VaR /> },
-      { path: "stress-tests", element: <StressTests /> },
-      { path: "backtesting", element: <Backtesting /> },
-      { path: "export", element: <Export /> },
-    ],
-  },
-])
+    // Use Vite's BASE_URL ("/" locally, "/market-risk-engine/" on GitHub Pages)
+    basename: import.meta.env.BASE_URL,
+  }
+)
 
