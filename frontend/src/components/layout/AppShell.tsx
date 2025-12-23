@@ -82,6 +82,45 @@ export function AppShell() {
         </main>
       </div>
 
+      {/* Subtle bottom-right support panel that stays out of the way */}
+      <div className="pointer-events-none fixed bottom-4 right-4 z-40">
+        <div className="pointer-events-auto flex flex-col gap-2 rounded-2xl border border-border/60 bg-background/95 px-4 py-3 shadow-lg shadow-black/30 backdrop-blur-md max-w-xs">
+          <span className="text-[11px] text-muted-foreground leading-snug">
+            If this engine helps your work or learning, a star on GitHub or a small sponsorship
+            goes a long way towards keeping it maintained.
+          </span>
+          <div className="flex flex-wrap gap-2 justify-end">
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary/10"
+            >
+              <a
+                href="https://github.com/tanishq-ctrl/market-risk-engine"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ⭐ Star on GitHub
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="sm"
+              className="bg-amber-500/90 text-black hover:bg-amber-400"
+            >
+              <a
+                href="https://github.com/sponsors/tanishq-ctrl"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ❤️ Support development
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       {/* Opt-in modal (one-time, theme-aware) */}
       <Dialog open={showOptIn} onOpenChange={setShowOptIn}>
         <DialogContent className="border border-primary/10 bg-gradient-to-b from-background to-background/95 shadow-2xl">

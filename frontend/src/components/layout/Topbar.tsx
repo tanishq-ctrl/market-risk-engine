@@ -21,52 +21,27 @@ export function Topbar() {
           </Badge>
         </div>
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex flex-col items-end gap-1 text-xs text-muted-foreground">
+          <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground">
+            <span className="uppercase tracking-wide text-[11px] text-muted-foreground/80">Built by</span>
+            <span className="font-semibold text-foreground">Tanishq Prabhu</span>
             <div className="flex items-center gap-2">
-              <span className="uppercase tracking-wide text-[11px] text-muted-foreground/80">
-                Built by
-              </span>
-              <span className="font-semibold text-foreground">Tanishq Prabhu</span>
-              <div className="flex items-center gap-2">
-                <a
-                  href="https://github.com/tanishq-ctrl/market-risk-engine"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-border bg-muted/60 text-foreground hover:bg-muted/80 hover:border-primary/50 transition-colors"
-                  aria-label="GitHub repository - Market Risk Engine"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/tanishq-prabhu-b71467166/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-border bg-muted/60 text-foreground hover:bg-accent/15 hover:border-accent/50 transition-colors"
-                  aria-label="LinkedIn - Tanishq Prabhu"
-                >
-                  <Linkedin className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] text-muted-foreground/80">
-                If this engine is helpful, please consider leaving a star on the GitHub repo.
-              </span>
               <a
                 href="https://github.com/tanishq-ctrl/market-risk-engine"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-primary/40 bg-primary/5 px-3 py-1 text-[11px] font-medium text-primary hover:bg-primary/10 hover:border-primary/60 transition-colors"
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-border bg-muted/60 text-foreground hover:bg-muted/80 hover:border-primary/50 transition-colors"
+                aria-label="GitHub repository - Market Risk Engine"
               >
-                ⭐ Star the project
+                <Github className="h-4 w-4" />
               </a>
               <a
-                href="https://github.com/sponsors/tanishq-ctrl"
+                href="https://www.linkedin.com/in/tanishq-prabhu-b71467166/"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-amber-400/40 bg-amber-400/5 px-3 py-1 text-[11px] font-medium text-amber-500 hover:bg-amber-400/10 hover:border-amber-400/60 transition-colors"
+                className="inline-flex items-center justify-center h-8 w-8 rounded-full border border-border bg-muted/60 text-foreground hover:bg-accent/15 hover:border-accent/50 transition-colors"
+                aria-label="LinkedIn - Tanishq Prabhu"
               >
-                ❤️ Support development
+                <Linkedin className="h-4 w-4" />
               </a>
             </div>
           </div>
