@@ -21,9 +21,11 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
+    # Allow local dev and public GitHub Pages frontend (and other origins if needed)
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://tanishq-ctrl.github.io",
     ],
     allow_credentials=True,
     allow_methods=["*"],
