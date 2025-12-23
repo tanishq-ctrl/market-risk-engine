@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createHashRouter } from "react-router-dom"
 import { AppShell } from "@/components/layout/AppShell"
 import { Portfolio } from "@/pages/Portfolio"
 import { MarketData } from "@/pages/MarketData"
@@ -8,7 +8,8 @@ import { StressTests } from "@/pages/StressTests"
 import { Backtesting } from "@/pages/Backtesting"
 import { Export } from "@/pages/Export"
 
-export const router = createBrowserRouter(
+// Use hash-based routing to work reliably on GitHub Pages and other static hosts
+export const router = createHashRouter(
   [
     {
       path: "/",
@@ -24,10 +25,6 @@ export const router = createBrowserRouter(
         { path: "export", element: <Export /> },
       ],
     },
-  ],
-  {
-    // Use Vite's BASE_URL ("/" locally, "/market-risk-engine/" on GitHub Pages)
-    basename: import.meta.env.BASE_URL,
-  }
+  ]
 )
 
