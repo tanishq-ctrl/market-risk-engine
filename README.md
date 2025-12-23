@@ -52,6 +52,9 @@ Premium, end-to-end **Market Risk Engine** with:
   - [Stress Testing](#stress-testing)
   - [VaR Backtesting](#var-backtesting)
 - [Frontend Experience](#frontend-experience)
+- [Backend API Reference](#backend-api-reference)
+- [Frontend Pages Reference](#frontend-pages-reference)
+- [Methods & Assumptions](#methods--assumptions)
 - [Getting Started](#getting-started)
 - [Running Tests](#running-tests)
 - [Configuration](#configuration)
@@ -290,7 +293,121 @@ Defined in `backend/app/core/config.py` and environment variables:
 
 ---
 
-## 📐 Design Principles
+## Backend API Reference
+
+The FastAPI backend exposes the following REST endpoints (all under `/api` prefix):
+
+| Endpoint | Method | Description | Request Body |
+|----------|--------|-------------|--------------|
+| `/api/market/prices` | POST | Fetch historical prices for symbols | `symbols[]`, `start`, `end` |
+| `/api/market/correlation` | POST | Compute correlation matrix | `symbols[]`, `start`, `end` |
+| `/api/portfolio/normalize` | POST | Normalize portfolio weights | `portfolio[]` |
+| `/api/risk/metrics` | POST | Compute comprehensive risk metrics | `portfolio[]`, `start`, `end`, `benchmark_symbol?`, `risk_free_rate?` |
+| `/api/risk/var` | POST | Calculate VaR/CVaR | `portfolio[]`, `method`, `confidence`, `start`, `end`, `lookback?`, `horizon_days?`, `return_type?`, `drift?`, `parametric_dist?`, `hs_weighting?`, `mc_sims?` |
+| `/api/stress/run` | POST | Run stress test scenario | `portfolio[]`, `scenario`, `shocks?` (for CUSTOM), `stress_mode?` |
+| `/api/backtest/var` | POST | Backtest VaR model | `portfolio[]`, `method`, `confidence`, `lookback`, `backtest_days`, `start`, `end`, `mc_sims?` |
+| `/api/optin` | POST | Record opt-in (name/email) | `name`, `email` |
+| `/health` | GET | Health check | - |
+| `/` | GET | API info | - |
+| `/docs` | GET | Swagger UI | - |
+
+**Note**: All endpoints return JSON. See `http://localhost:8000/docs` for interactive API documentation.
+
+---
+
+## Frontend Pages Reference
+
+The React SPA includes the following main pages (accessible via hash routing):
+
+| Page | Route | Purpose | Key Features |
+|------|-------|---------|--------------|
+| **Portfolio** | `/#/portfolio` | Build and manage portfolios | Editable table, CSV/JSON upload, quick templates, weight normalization, pie chart |
+| **Market Data** | `/#/market-data` | Inspect price data and quality | Price charts, normalized returns, stats KPIs, missing data matrix, correlation heatmap |
+| **Risk Metrics** | `/#/risk-metrics` | Comprehensive risk analytics | Volatility, Sharpe/Sortino, drawdowns, correlation matrix, risk contributions, benchmark analytics, rolling metrics |
+| **VaR / CVaR** | `/#/var` | Value at Risk estimation | Historical/Parametric/Monte Carlo methods, tail diagnostics, rolling VaR, multi-confidence ladder, method comparison |
+| **Stress Tests** | `/#/stress-tests` | Scenario-based stress testing | Quick equity, historical crises, multi-factor, custom scenarios, duration/rate shock mode, waterfall/tornado charts |
+| **Backtesting** | `/#/backtesting` | VaR model validation | Rolling backtest, Kupiec POF test, exception analysis, realized vs VaR charts, CSV/JSON export |
+| **Export** | `/#/export` | Export configuration and results | JSON snapshot, CSV exports, selectable sections, markdown/JSON preview |
+
+**Note**: Portfolio data, date ranges, and VaR settings are persisted in `localStorage` for convenience.
+
+---
+
+## Methods & Assumptions
+
+### VaR Calculation Methods
+
+#### Historical VaR
+- **Method**: Percentile-based on historical returns
+- **Assumptions**:
+  - Past returns are representative of future risk
+  - Equal weighting (default) or EWMA weighting (optional)
+  - No distributional assumptions
+- **Limitations**: Requires sufficient historical data; may underestimate tail risk in calm periods
+
+#### Parametric VaR
+- **Methods**: Normal distribution or Student-t distribution
+- **Assumptions**:
+  - Returns follow specified distribution (Normal or Student-t)
+  - Constant volatility (no GARCH effects)
+  - For Student-t: degrees of freedom estimated from data
+- **Limitations**: May underestimate tail risk if returns are non-normal; assumes stationarity
+
+#### Monte Carlo VaR
+- **Method**: Multivariate normal simulation
+- **Assumptions**:
+  - Asset returns follow multivariate normal distribution
+  - Covariance matrix is stable
+  - Horizon scaling via `sqrt(horizon_days)` approximation for variance
+- **Limitations**: 
+  - Multivariate normal may not capture tail dependencies
+  - Simulations capped at 10,000 for performance
+  - Requires asset-level returns (not just portfolio returns)
+
+### Risk Metrics Assumptions
+
+- **Annualization**: Uses 252 trading days per year (configurable)
+- **Return Types**: Supports both simple and log returns (log returns default for risk metrics)
+- **Benchmark Analytics**: Requires benchmark symbol to be in portfolio or fetched separately
+- **Risk Contributions**: Based on sample covariance matrix; assumes linear portfolio structure
+
+### Stress Testing Assumptions
+
+- **Return Shock Mode** (default): Linear model `P&L = weight × shock`; no correlation effects
+- **Duration/Rate Shock Mode** (advanced): 
+  - Bond price impact approximated via `ΔP/P ≈ -duration × Δy` (where Δy in decimal)
+  - Falls back to return shock if duration/DV01 not provided
+- **Historical Scenarios**: Uniform shocks (approximations); not actual historical replay
+- **Multi-Factor Scenarios**: Asset type inferred from symbol (e.g., TLT=bond, GLD=commodity)
+
+### Data & Preprocessing Assumptions
+
+- **Data Source**: Yahoo Finance via `yfinance` (daily bars)
+- **Missing Data**: Forward-fills gaps up to 2 trading days; symbols with excessive gaps are filtered
+- **Minimum Observations**: Requires ≥60 observations for reliable metrics (configurable)
+- **Symbol Format**: 
+  - US stocks: plain symbol (e.g., `AAPL`)
+  - NSE stocks: append `.NS` (e.g., `RELIANCE.NS`)
+  - Indices: use `^` prefix (e.g., `^NSEI` for NIFTY 50)
+
+### Backtesting Assumptions
+
+- **Rolling Window**: Uses expanding window (all prior data up to each test date)
+- **Exception Definition**: Realized return < -VaR threshold
+- **Kupiec Test**: Assumes exceptions follow binomial distribution; requires sufficient backtest days for statistical power
+
+### General Limitations
+
+- **No Real-Time Data**: All data is historical (end-of-day)
+- **No Options/Derivatives**: Only handles stocks, ETFs, indices
+- **No Transaction Costs**: All calculations assume frictionless trading
+- **No Liquidity Risk**: Assumes all positions can be liquidated instantly
+- **Single Currency**: No explicit FX risk handling (assumes USD or local currency)
+- **Static Portfolio**: No rebalancing logic; portfolio weights assumed constant over time
+
+---
+
+## Design Principles
 
 - **Realistic, not toy**: Implements commonly used techniques in professional risk management (vol/drawdown, Sharpe/Sortino, VaR variants, EWMA, Kupiec).
 - **Safe defaults**: Caps Monte Carlo simulations, warns on small samples, and handles missing/failed symbols gracefully.
