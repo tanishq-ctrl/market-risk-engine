@@ -182,11 +182,14 @@ export function EnhancedHistogram({
                 borderRadius: "0.75rem",
                 boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.1)",
               }}
-              formatter={(value: number, name: string) => {
-                if (name === "normal") return [value.toFixed(0), "Normal Dist"]
-                return [value, "Count"]
-              }}
-              labelFormatter={(value) => `Return: ${value.toFixed(2)}%`}
+              // Cast formatter to any to align with Recharts' Formatter<ValueType, NameType> across versions
+              formatter={((value: number | undefined, name?: string) => {
+                if (name === "normal" && typeof value === "number") {
+                  return [value.toFixed(0), "Normal Dist"]
+                }
+                return [value ?? 0, "Count"]
+              }) as any}
+              labelFormatter={(value: number) => `Return: ${value.toFixed(2)}%`}
             />
 
             {/* Histogram bars with gradient for tail */}

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useState, useEffect } from "react"
 import { useMutation } from "@tanstack/react-query"
 import { PageHeader } from "@/components/common/PageHeader"

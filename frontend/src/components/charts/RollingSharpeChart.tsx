@@ -72,8 +72,9 @@ export function RollingSharpeChart({
           />
           <Tooltip
             labelFormatter={(value) => formatDate(value)}
-            formatter={(value: number | null) => 
-              value !== null ? formatNum(value, 2) : "N/A"
+            // Loosen types slightly for compatibility with Recharts' Formatter<ValueType, NameType>
+            formatter={(value) =>
+              value != null ? formatNum(value as number, 2) : "N/A"
             }
             contentStyle={{
               backgroundColor: "hsl(var(--background))",

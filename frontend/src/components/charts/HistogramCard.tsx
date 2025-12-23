@@ -52,10 +52,13 @@ export function HistogramCard({
           />
           <YAxis className="text-xs" />
           <Tooltip
-            formatter={(value: number, name: string) => {
-              if (name === "bin") return formatPct(value)
-              return value
-            }}
+            // Cast formatter to any to satisfy Recharts' generic Formatter type across versions
+            formatter={((value: number | undefined, name?: string) => {
+              if (name === "bin" && typeof value === "number") {
+                return formatPct(value)
+              }
+              return value ?? ""
+            }) as any}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",
