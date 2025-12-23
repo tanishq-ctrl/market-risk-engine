@@ -45,44 +45,44 @@ export function SidebarNav({ collapsed = false }: SidebarNavProps) {
       >
         <div className="flex h-full flex-col justify-between">
           <nav className="flex flex-col gap-2 p-4 pb-6">
-            {navItems.map((item) => {
-              const Icon = item.icon
-              return (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileOpen(false)}
-                  className={({ isActive }) =>
-                    cn(
-                      "group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 relative overflow-hidden",
-                      isActive
-                        ? "bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg scale-105"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent/50 hover:scale-102"
-                    )
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      {isActive && (
-                        <span className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 blur-xl" />
-                      )}
+          {navItems.map((item) => {
+            const Icon = item.icon
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  cn(
+                    "group flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 relative overflow-hidden",
+                    isActive
+                      ? "bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg scale-105"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent/50 hover:scale-102"
+                  )
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 blur-xl" />
+                    )}
                       <Icon
                         className={cn(
-                          "h-5 w-5 relative z-10 transition-transform group-hover:scale-110",
-                          isActive && "drop-shadow-lg"
+                      "h-5 w-5 relative z-10 transition-transform group-hover:scale-110",
+                      isActive && "drop-shadow-lg"
                         )}
                       />
-                      {!collapsed && (
+                    {!collapsed && (
                         <span className="relative z-10 font-semibold">
                           {item.label}
                         </span>
-                      )}
-                    </>
-                  )}
-                </NavLink>
-              )
-            })}
-          </nav>
+                    )}
+                  </>
+                )}
+              </NavLink>
+            )
+          })}
+        </nav>
 
           {!collapsed && (
             <div className="border-t border-border/60 px-4 py-4 text-xs text-muted-foreground/90 space-y-2">

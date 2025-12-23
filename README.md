@@ -1,8 +1,45 @@
-## Market Risk Engine
+<div align="center">
 
-Premium, end-to-end **Market Risk Engine** with a FastAPI backend and a modern React/TypeScript frontend. It supports **VaR, CVaR, stress testing, risk analytics, and VaR backtesting** for portfolios built from any Yahoo Finance symbol.
+<h2>💹 Market Risk Engine</h2>
+
+<p>
+  End-to-end <strong>Market Risk Engine</strong> with a FastAPI backend and a modern React/TypeScript frontend.<br />
+  Built to feel like a <strong>real risk desk</strong>: VaR, CVaR, stress testing, rich analytics, and VaR backtesting.
+</p>
+
+<!-- Badges -->
+<p>
+  <a href="https://tanishq-ctrl.github.io/market-risk-engine/">
+    <img src="https://img.shields.io/badge/Live_Demo-Fintech_Dashboard-4ade80?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+  <img src="https://img.shields.io/badge/Backend-FastAPI-22c55e?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Frontend-React_19-38bdf8?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/Risk-VaR_·_CVaR_·_Stress_Tests-f97316?style=for-the-badge" alt="Risk Features" />
+</p>
+
+<!-- CTA buttons -->
+<p>
+  <a href="https://tanishq-ctrl.github.io/market-risk-engine/" target="_blank">
+    <img src="https://img.shields.io/badge/▶️%20Try%20the%20Engine-0f172a?style=for-the-badge&labelColor=22c55e&color=0f172a" alt="Try the Engine" />
+  </a>
+  <a href="https://github.com/tanishq-ctrl/market-risk-engine" target="_blank">
+    <img src="https://img.shields.io/badge/⭐%20Star%20on%20GitHub-020617?style=for-the-badge&logo=github&logoColor=white" alt="Star on GitHub" />
+  </a>
+</p>
+
+<sub><em>Best experienced on desktop for the full multi-panel analytics layout.</em></sub>
+
+</div>
+
+---
 
 > Designed as a realistic, production-style risk stack: data ingestion, cleaning, portfolio construction, risk analytics, visualization, and export – all in one repo.
+
+Premium, end-to-end **Market Risk Engine** with:
+
+- A **FastAPI** service for high-performance risk calculations.
+- A **React 19 + Vite** SPA with a fintech-inspired dark theme.
+- Integrated **Google Sheets opt-in** and deploy-ready configs (Railway + GitHub Pages).
 
 ---
 
@@ -119,37 +156,37 @@ For deeper detail:
 
 ## Frontend Experience
 
-The frontend is a single-page app that exposes the full engine via a clean, “risk desk” style UI:
+The frontend is a single-page app that exposes the full engine via a clean, **trading-terminal style** UI:
 
-- **Portfolio**: create/edit portfolios, upload/download CSV/JSON, quick templates, sliders
-- **Market Data**: price and normalized return charts, stats KPIs, missing-data table, correlation heatmap
-- **Risk Metrics**: KPI cards, rolling vol & Sharpe, correlation matrix, risk contributions (table + bar chart), benchmark analytics
-- **VaR / CVaR**: method tabs, advanced controls, tail diagnostics, rolling VaR vs realized
-- **Stress Tests**:
-  - Scenario tabs (Quick, Historical, Multi-Factor, Custom)
-  - Advanced toggle for duration/rate shocks
-  - Visuals: waterfall, tornado chart, heatmaps, severity indicators, sensitivity analysis
-- **Backtesting**: exception diagnostics, Kupiec stats, realized vs VaR chart, CSV/JSON export
-- **Export**: JSON snapshot of configuration and key results
-- **UX**: dark mode, responsive layout, type-safe API integration
+| Area          | What you see                                                                                 | Why it matters                              |
+| ------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| **Portfolio** | Editable table, CSV/JSON upload, quick templates, long/short weights, basic sanity checks   | Build realistic books in seconds            |
+| **Market Data** | Price & normalized return charts, stats KPIs, missing-data matrix, correlation heatmap   | Understand return drivers & data quality    |
+| **Risk Metrics** | Vol/Sharpe/Sortino, drawdowns, risk contributions, benchmark analytics                  | Decompose and attribute portfolio risk      |
+| **VaR / CVaR** | Historical / Parametric / MC methods, tails, rolling VaR                                   | Compare methodologies and tail behavior     |
+| **Stress Tests** | Quick, historical, and multi-factor scenarios, bond duration mode, tornado/waterfall   | Answer “what if?” across regimes            |
+| **Backtesting** | Exception paths, Kupiec tests, realized vs VaR                                            | Validate if your VaR is doing its job       |
+| **Export**      | JSON snapshot of config + results, CSV exports                                            | Share and document your risk runs           |
+
+> 🌓 The UI ships with a **dark, fintech-inspired theme** and responsive layout so it feels at home on large monitors and still works on laptops.
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone <this-repo-url>   # replace with your repo URL
 cd "untitled folder 3"    # or your chosen project directory
 ```
 
-### 2. Backend (FastAPI)
+### 2️⃣ Backend (FastAPI)
 
-#### Prerequisites
+#### 📦 Prerequisites
 - Python 3.11+
 
-#### Install & Run
+#### ⚙️ Install & Run
 
 ```bash
 cd backend
@@ -164,12 +201,12 @@ uvicorn app.main:app --reload --port 8000
 
 For more backend details and curl examples, see `backend/README.md`.
 
-### 3. Frontend (React + Vite)
+### 3️⃣ Frontend (React + Vite)
 
-#### Prerequisites
+#### 📦 Prerequisites
 - Node.js 18+ and npm
 
-#### Install & Run
+#### ⚙️ Install & Run
 
 ```bash
 cd ../frontend
@@ -189,9 +226,9 @@ For more frontend details, see `frontend/README.md`.
 
 ---
 
-## Running Tests
+## 🧪 Running Tests
 
-### Backend
+### 🐍 Backend
 
 ```bash
 cd backend
@@ -209,7 +246,7 @@ You can also run the high-level stress verification script:
 python verify_stress_upgrade.py
 ```
 
-### Frontend
+### ⚛️ Frontend
 
 ```bash
 cd frontend
@@ -218,9 +255,9 @@ npm test
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
-### Backend Config Highlights
+### 🛠 Backend Config Highlights
 
 Defined in `backend/app/core/config.py` and environment variables:
 
@@ -230,7 +267,7 @@ Defined in `backend/app/core/config.py` and environment variables:
 - `DEFAULT_BACKTEST_LOOKBACK`, `DEFAULT_MC_SIMS` – reasonable risk defaults
 - `CACHE_TTL_SECONDS` – in-memory cache TTL
 
-### Frontend Config Highlights
+### 💻 Frontend Config Highlights
 
 - `.env` / `.env.local`:
   - `VITE_API_URL` – backend base URL
@@ -241,7 +278,7 @@ Defined in `backend/app/core/config.py` and environment variables:
 
 ---
 
-## Typical Workflow
+## 🪜 Typical Workflow
 
 1. **Build a portfolio** on the Portfolio page (or upload CSV/JSON)
 2. **Inspect market data** for your symbols (prices, stats, correlation)
@@ -253,7 +290,7 @@ Defined in `backend/app/core/config.py` and environment variables:
 
 ---
 
-## Design Principles
+## 📐 Design Principles
 
 - **Realistic, not toy**: Implements commonly used techniques in professional risk management (vol/drawdown, Sharpe/Sortino, VaR variants, EWMA, Kupiec).
 - **Safe defaults**: Caps Monte Carlo simulations, warns on small samples, and handles missing/failed symbols gracefully.
@@ -262,7 +299,7 @@ Defined in `backend/app/core/config.py` and environment variables:
 
 ---
 
-## License
+## 📄 License
 
 This project is provided **as-is** for educational and research purposes.
 
