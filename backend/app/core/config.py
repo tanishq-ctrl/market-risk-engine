@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     
     # Cache
     CACHE_TTL_SECONDS: int = 3600
-
+    
     # Google Sheets / opt-in integration (all optional)
     GOOGLE_SHEETS_SERVICE_ACCOUNT_JSON: str | None = None
     GOOGLE_SHEETS_SPREADSHEET_ID: str | None = None
