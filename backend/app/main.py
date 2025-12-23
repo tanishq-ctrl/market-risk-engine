@@ -5,6 +5,7 @@ import logging
 
 from app.core.logging import RequestIDMiddleware
 from app.api import routes_market, routes_portfolio, routes_risk, routes_stress, routes_backtest
+from app.api import routes_optin
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -38,6 +39,7 @@ app.include_router(routes_portfolio.router, prefix="/api")
 app.include_router(routes_risk.router, prefix="/api")
 app.include_router(routes_stress.router, prefix="/api")
 app.include_router(routes_backtest.router, prefix="/api")
+app.include_router(routes_optin.router, prefix="/api")
 
 
 @app.get("/health")

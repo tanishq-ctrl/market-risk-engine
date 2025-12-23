@@ -10,3 +10,10 @@ pydantic>=2.0.0
 pydantic-settings>=2.0.0
 python-dateutil>=2.8.0
 
+# Google Sheets opt-in (service account based)
+gspread>=6.0.0
+google-auth>=2.0.0
+
+# Required by pydantic EmailStr (used in opt-in route)
+email-validator>=2.0.0
+

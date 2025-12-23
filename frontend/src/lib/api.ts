@@ -128,3 +128,8 @@ export const backtestVar = async (params: {
   return parsed.data;
 };
 
+export const optIn = async (params: { name: string; email: string }) => {
+  return post<typeof params, { success: boolean; message: string }>("/api/optin", params);
+};
+
+
