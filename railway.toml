@@ -1,0 +1,11 @@
+[build]
+# Use Nixpacks builder and explicitly tell Railway how to build and run the backend.
+builder = "NIXPACKS"
+
+# Build the backend service: install Python deps from the backend folder.
+buildCommand = "cd backend && pip install -r requirements.txt"
+
+# Start the FastAPI app with uvicorn, binding to the port Railway provides.
+startCommand = "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+
+
