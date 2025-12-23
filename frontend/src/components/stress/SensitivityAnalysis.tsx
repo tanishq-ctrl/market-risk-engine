@@ -59,7 +59,7 @@ export function SensitivityAnalysis({ baseShock, basePnL, sensitivityData }: Sen
             }}
           />
           <Tooltip
-            formatter={(value: number) => formatSignedPct(value)}
+            formatter={(value: number | undefined) => formatSignedPct(value ?? 0)}
             labelFormatter={(value) => `Shock: ${formatPct(value)}`}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",

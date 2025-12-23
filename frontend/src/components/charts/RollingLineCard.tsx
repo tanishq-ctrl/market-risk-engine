@@ -80,7 +80,7 @@ export function RollingLineCard({
           <YAxis tickFormatter={yAxisFormatter} className="text-xs" />
           <Tooltip
             labelFormatter={(value) => formatDate(value)}
-            formatter={(value: number) => yAxisFormatter(value)}
+            formatter={(value: number | undefined) => yAxisFormatter(value ?? 0)}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

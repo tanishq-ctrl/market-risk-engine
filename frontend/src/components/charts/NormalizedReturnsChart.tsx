@@ -119,7 +119,7 @@ export function NormalizedReturnsChart({
           />
           <Tooltip
             labelFormatter={(value) => formatDate(value)}
-            formatter={(value: number) => value.toFixed(2)}
+            formatter={(value: number | undefined) => (value ?? 0).toFixed(2)}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

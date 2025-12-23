@@ -73,7 +73,7 @@ export function UnderwaterChart({
           />
           <Tooltip
             labelFormatter={(value) => formatDate(value)}
-            formatter={(value: number) => [`${value.toFixed(2)}%`, "Drawdown"]}
+            formatter={(value: number | undefined) => [`${(value ?? 0).toFixed(2)}%`, "Drawdown"]}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

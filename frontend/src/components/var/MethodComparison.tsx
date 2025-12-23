@@ -41,7 +41,7 @@ export function MethodComparison({ results }: MethodComparisonProps) {
 
   const agreementVariant =
     agreementLevel === "strong"
-      ? "success"
+      ? "secondary"
       : agreementLevel === "moderate"
       ? "default"
       : "destructive"

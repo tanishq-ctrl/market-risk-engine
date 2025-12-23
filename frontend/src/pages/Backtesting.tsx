@@ -196,7 +196,7 @@ export function Backtesting() {
         ? data.exceptions_count === 0
         : Math.abs(data.exceptions_count - expectedExceptions) / expectedExceptions < tolerance
 
-    const hasGoodPValue = data.kupiec_pvalue !== null && data.kupiec_pvalue > 0.05
+    const hasGoodPValue = data?.kupiec_pvalue != null && data.kupiec_pvalue > 0.05
 
     if (isWithinTolerance && hasGoodPValue) {
       return {

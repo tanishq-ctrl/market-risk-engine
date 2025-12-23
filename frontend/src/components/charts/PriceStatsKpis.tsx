@@ -3,6 +3,7 @@ import { formatPct } from "@/lib/format"
 import { TrendingUp, TrendingDown, Activity, DollarSign } from "lucide-react"
 
 interface PriceStatsKpisProps {
+  dates: string[]
   prices: Record<string, (number | null)[]>
 }
 

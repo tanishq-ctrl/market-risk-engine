@@ -61,7 +61,7 @@ export function ReturnsAreaCard({
           />
           <Tooltip
             labelFormatter={(value) => formatDate(value)}
-            formatter={(value: number) => formatSignedPct(value)}
+            formatter={(value: number | undefined) => formatSignedPct(value ?? 0)}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

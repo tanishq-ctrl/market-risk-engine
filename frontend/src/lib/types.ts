@@ -178,9 +178,9 @@ export type BacktestResponse = {
     dates: string[];
     realized: number[];
     var_threshold: number[];
-    exceptions: boolean[];
+    exceptions?: boolean[];
   };
-  exceptions_table: Array<{
+  exceptions_table?: Array<{
     date: string;
     realized: number;
     var_threshold: number;
