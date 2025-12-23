@@ -43,7 +43,7 @@ export function TornadoDiagram({ data }: TornadoDiagramProps) {
             width={90}
           />
           <Tooltip
-            formatter={(value: number | undefined) => formatSignedPct(value ?? 0)}
+            formatter={(value: number) => formatSignedPct(value)}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

@@ -4,7 +4,6 @@ import { formatNum, formatPct } from "@/lib/format"
 import { ArrowUp, ArrowDown } from "lucide-react"
 
 interface PriceStatsTableProps {
-  dates: string[]
   prices: Record<string, (number | null)[]>
 }
 

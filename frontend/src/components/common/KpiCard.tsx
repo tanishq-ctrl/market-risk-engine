@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import type { LucideProps } from "lucide-react"
-import type React from "react"
 
 interface KpiCardProps {
   title: string
@@ -9,8 +8,6 @@ interface KpiCardProps {
   subtitle?: string
   icon?: React.ComponentType<LucideProps>
   className?: string
-  /** Optional visual variant hint; currently forwarded as part of className when needed. */
-  variant?: string
 }
 
 export function KpiCard({ title, value, subtitle, icon: Icon, className }: KpiCardProps) {

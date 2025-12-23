@@ -182,10 +182,9 @@ export function EnhancedHistogram({
                 borderRadius: "0.75rem",
                 boxShadow: "0 10px 30px -5px rgba(0, 0, 0, 0.1)",
               }}
-              formatter={(value: number | undefined, name: string) => {
-                const v = value ?? 0
-                if (name === "normal") return [v.toFixed(0), "Normal Dist"]
-                return [v, "Count"]
+              formatter={(value: number, name: string) => {
+                if (name === "normal") return [value.toFixed(0), "Normal Dist"]
+                return [value, "Count"]
               }}
               labelFormatter={(value) => `Return: ${value.toFixed(2)}%`}
             />

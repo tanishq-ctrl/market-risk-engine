@@ -21,21 +21,19 @@ function collectItems(children: React.ReactNode): Array<{ value: string; label: 
   const items: Array<{ value: string; label: React.ReactNode }> = []
   React.Children.forEach(children, (child) => {
     if (!React.isValidElement(child)) return
-    const element = child as React.ReactElement<any>
     // Dive into SelectContent wrappers
-    const typeName = (element.type as any)?.displayName
+    const typeName = (child.type as any)?.displayName
     if (typeName === "SelectContent" || typeName === React.Fragment) {
-      items.push(...collectItems((element.props as any).children))
+      items.push(...collectItems(child.props.children))
       return
     }
-    const props = element.props as any
-    if (typeName === "SelectItem" && props?.value) {
-      items.push({ value: props.value, label: props.children })
+    if (typeName === "SelectItem" && child.props?.value) {
+      items.push({ value: child.props.value, label: child.props.children })
       return
     }
     // Recurse others
-    if (props?.children) {
-      items.push(...collectItems(props.children))
+    if (child.props?.children) {
+      items.push(...collectItems(child.props.children))
     }
   })
   return items

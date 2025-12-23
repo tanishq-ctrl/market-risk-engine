@@ -385,7 +385,7 @@ export function VaR() {
           <Accordion type="single" collapsible>
             <AccordionItem value="historical-advanced">
               <AccordionTrigger>Historical Advanced</AccordionTrigger>
-              <AccordionContent value="historical-advanced" className="space-y-4">
+              <AccordionContent className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Switch
                     id="hs-weighting"
@@ -515,7 +515,7 @@ export function VaR() {
           <Accordion type="single" collapsible>
             <AccordionItem value="parametric-advanced">
               <AccordionTrigger>Parametric Advanced</AccordionTrigger>
-              <AccordionContent value="parametric-advanced" className="space-y-4">
+              <AccordionContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="drift-mode">Drift</Label>
                   <Select id="drift-mode" value={drift} onValueChange={(val) => setDrift(val as "include" | "ignore")}>
@@ -622,7 +622,7 @@ export function VaR() {
           <Accordion type="single" collapsible>
             <AccordionItem value="mc-advanced">
               <AccordionTrigger>Monte Carlo Advanced</AccordionTrigger>
-              <AccordionContent value="mc-advanced" className="space-y-4">
+              <AccordionContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="drift-mc">Drift</Label>
                   <Select id="drift-mc" value={drift} onValueChange={(val) => setDrift(val as "include" | "ignore")}>

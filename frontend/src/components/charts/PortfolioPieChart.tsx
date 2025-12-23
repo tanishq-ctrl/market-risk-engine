@@ -49,7 +49,7 @@ export function PortfolioPieChart({ portfolio, onSymbolClick }: PortfolioPieChar
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={({ name, percent = 0 }) => `${name} ${(percent * 100).toFixed(1)}%`}
+            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
             outerRadius={120}
             innerRadius={60}
             fill="#8884d8"
@@ -70,9 +70,7 @@ export function PortfolioPieChart({ portfolio, onSymbolClick }: PortfolioPieChar
             ))}
           </Pie>
           <Tooltip
-            formatter={(value: number | undefined) =>
-              `${(((value ?? 0) / totalWeight) * 100).toFixed(2)}%`
-            }
+            formatter={(value: number) => `${((value / totalWeight) * 100).toFixed(2)}%`}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
               border: "1px solid hsl(var(--border))",

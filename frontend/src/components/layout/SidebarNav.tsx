@@ -16,7 +16,6 @@ const navItems = [
 
 interface SidebarNavProps {
   collapsed?: boolean
-  onCollapse?: () => void
 }
 
 export function SidebarNav({ collapsed = false }: SidebarNavProps) {

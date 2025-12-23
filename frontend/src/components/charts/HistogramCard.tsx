@@ -52,9 +52,9 @@ export function HistogramCard({
           />
           <YAxis className="text-xs" />
           <Tooltip
-            formatter={(value: number | undefined, name: string) => {
-              if (name === "bin") return formatPct(value ?? 0)
-              return value ?? 0
+            formatter={(value: number, name: string) => {
+              if (name === "bin") return formatPct(value)
+              return value
             }}
             contentStyle={{
               backgroundColor: "hsl(var(--background))",
