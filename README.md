@@ -303,4 +303,12 @@ Defined in `backend/app/core/config.py` and environment variables:
 
 This project is provided **as-is** for educational and research purposes.
 
+---
+
+### Author
+
+Created and maintained by **Tanishq Prabhu**  
+LinkedIn: [https://www.linkedin.com/in/tanishq-prabhu-b71467166/](https://www.linkedin.com/in/tanishq-prabhu-b71467166/)
+
+© 2025 Tanishq Prabhu. All rights reserved.
 
