@@ -11,20 +11,20 @@ import { Export } from "@/pages/Export"
 // Use hash-based routing to work reliably on GitHub Pages and other static hosts
 export const router = createHashRouter(
   [
-    {
-      path: "/",
-      element: <AppShell />,
-      children: [
-        { index: true, element: <Portfolio /> },
-        { path: "portfolio", element: <Portfolio /> },
-        { path: "market-data", element: <MarketData /> },
-        { path: "risk-metrics", element: <RiskMetrics /> },
-        { path: "var", element: <VaR /> },
-        { path: "stress-tests", element: <StressTests /> },
-        { path: "backtesting", element: <Backtesting /> },
-        { path: "export", element: <Export /> },
-      ],
-    },
+  {
+    path: "/",
+    element: <AppShell />,
+    children: [
+      { index: true, element: <Portfolio /> },
+      { path: "portfolio", element: <Portfolio /> },
+      { path: "market-data", element: <MarketData /> },
+      { path: "risk-metrics", element: <RiskMetrics /> },
+      { path: "var", element: <VaR /> },
+      { path: "stress-tests", element: <StressTests /> },
+      { path: "backtesting", element: <Backtesting /> },
+      { path: "export", element: <Export /> },
+    ],
+  },
   ]
 )
 
