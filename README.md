@@ -307,8 +307,15 @@ This project is provided **as-is** for educational and research purposes.
 
 ### Author
 
-Created and maintained by **Tanishq Prabhu**  
-LinkedIn: [https://www.linkedin.com/in/tanishq-prabhu-b71467166/](https://www.linkedin.com/in/tanishq-prabhu-b71467166/)
+<div align="left">
+
+**Tanishq Prabhu**  
+
+<a href="https://www.linkedin.com/in/tanishq-prabhu-b71467166/" target="_blank">
+  <img src="https://img.shields.io/badge/Connect-LinkedIn-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn - Tanishq Prabhu" />
+</a>
+
+</div>
 
 © 2025 Tanishq Prabhu. All rights reserved.
 
