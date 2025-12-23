@@ -25,11 +25,11 @@ jobs:
         working-directory: frontend
         run: npm ci
 
-      - name: Build frontend for GitHub Pages
+      - name: Build frontend for GitHub Pages (Vite only, no TS typecheck)
         working-directory: frontend
         env:
           VITE_API_URL: https://market-risk-engine-production.up.railway.app
-        run: npm run build -- --base=/${{ github.event.repository.name }}/
+        run: npm run build:vite -- --base=/${{ github.event.repository.name }}/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
